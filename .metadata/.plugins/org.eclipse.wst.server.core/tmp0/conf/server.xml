@@ -60,7 +60,7 @@
          APR (HTTP/AJP) Connector: /docs/apr.html
          Define a non-SSL/TLS HTTP/1.1 Connector on port 8080
     -->
-    <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443"/>
+    <Connector connectionTimeout="20000" port="8087" protocol="HTTP/1.1" redirectPort="8443"/>
     <!-- A "Connector" using the shared thread pool-->
     <!--
     <Connector executor="tomcatThreadPool"
@@ -149,7 +149,11 @@
              Note: The pattern used is equivalent to using pattern="common" -->
         <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs" pattern="%h %l %u %t &quot;%r&quot; %s %b" prefix="localhost_access_log" suffix=".txt"/>
 
-      <Context docBase="E:\WebAppSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="E:\WebAppSpace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\SimpleWebApp" path="/SimpleWebApp" reloadable="true" source="org.eclipse.jst.jee.server:SimpleWebApp"/></Host>
+      <Context docBase="E:\Github\SimpleWebApplication\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ROOT" path="" reloadable="false"/><Context docBase="E:\Github\SimpleWebApplication\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\ExampleProject" path="/ExampleProject" reloadable="true" source="org.eclipse.jst.jee.server:ExampleProject">
+  <Resource auth="Container" defaultAutoCommit="true" driverClassName="com.mysql.jdbc.Driver" factory="org.apache.tomcat.jdbc.pool.DataSourceFactory" maxActive="25" maxIdle="10" maxWait="10000" name="jdbc/student" password="root" removeAbandoned="true" removeAbandonedTimeout="300" type="javax.sql.DataSource" url="jdbc:mysql://localhost:3306/student" username="root"/>
+	
+	 <ResourceLink global="jdbc/student" name="jdbc/student" type="javax.sql.DataSource"/>
+</Context></Host>
     </Engine>
   </Service>
 </Server>
